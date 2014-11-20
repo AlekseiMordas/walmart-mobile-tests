@@ -1,0 +1,41 @@
+<assembly>
+	<formats>
+		<format>dir</format>
+	</formats>
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<dependencySets>
+		<dependencySet>
+			<unpack>false</unpack>
+			<scope>runtime</scope>
+			<outputDirectory>lib</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+	<files>
+		<file>
+			<source>target/${artifactId}-${project.version}.${project.packaging}
+			</source>
+			<destName>${artifactId}.${project.packaging}</destName>
+		</file>
+		<file>
+			<source>testng.xml</source>
+			<destName>testng.xml</destName>
+		</file>
+		<file>
+			<source>local.properties</source>
+			<destName>local.properties</destName>
+		</file>
+		
+	</files>
+	<fileSets>
+		<fileSet>
+			<directory>app</directory>
+			<outputDirectory>app</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>scripts</directory>
+			<outputDirectory>scripts</outputDirectory>
+		</fileSet>
+
+	</fileSets>
+</assembly>
