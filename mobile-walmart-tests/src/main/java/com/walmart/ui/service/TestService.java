@@ -1,7 +1,6 @@
 package com.walmart.ui.service;
 
 import com.walmart.driver.appiumdriver.AppiumDriver;
-import com.walmart.tests.constants.Payment;
 import com.walmart.ui.bo.User;
 import com.walmart.ui.page.LoginPage;
 import com.walmart.ui.page.SignUpPage;
@@ -34,13 +33,13 @@ public class TestService {
 			loginPage.checkPage();
 			loginPage.login(user);
 		} else {
-			homePage.mainMenu.openLeftMenu();
+			homePage.mainMenu.open();
 		}
 	}
 
 	public void openLoginPage() {
 		homePage = new HomePage(driver);
-		loginPage = homePage.mainMenu.openLeftMenu().clickLogIn();
+		loginPage = homePage.mainMenu.open().clickLogIn();
 		loginPage.checkPage();
 	}
 
@@ -50,7 +49,8 @@ public class TestService {
 		signUp.checkPage();
 		signUp.fillRegistrationData(user);
 		homePage = signUp.clickContinue();
-		return homePage.mainMenu.openLeftMenu().isLogOutButtonVisible();
+		return homePage.mainMenu.open().isLogOutButtonVisible();
 	}
+	
 
 }

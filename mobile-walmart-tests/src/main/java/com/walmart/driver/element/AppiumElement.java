@@ -1,5 +1,8 @@
 package com.walmart.driver.element;
 
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.SwipeElementDirection;
+
 import java.awt.Rectangle;
 
 import org.apache.log4j.Logger;
@@ -15,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.utils.wait.AppiumWait;
 import com.walmart.utils.wait.Function;
-
 
 public class AppiumElement implements Element {
 
@@ -112,6 +114,29 @@ public class AppiumElement implements Element {
 	public String getAttribute(final String attribute) {
 		return driver.findElement(by).getAttribute(attribute);
 	}
+
+	public Point getCenter() {
+		Point upperLeft = getLocation();
+		Dimension dimensions = getSize();
+		return new Point(upperLeft.getX() + dimensions.getWidth() / 2,
+				upperLeft.getY() + dimensions.getHeight() / 2);
+	}
+
+//	public void pinch() {
+//		driver.pinch(driver.findElement(by));
+//	}
+//
+//	public void tap(int fingers, int duration) {
+//		driver.tap(fingers, driver.findElement(by), duration);
+//	}
+//
+//	public void zoom() {
+//		driver.zoom(driver.findElement(by));
+//	}
+//
+//	public void swipe(SwipeElementDirection direction, int duration) {
+//		direction.swipe(driver, (MobileElement) driver.findElement(by), duration);
+//	}
 
 	@Override
 	public boolean isVisible() {

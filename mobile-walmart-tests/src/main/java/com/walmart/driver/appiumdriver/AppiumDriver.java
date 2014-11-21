@@ -1,5 +1,7 @@
 package com.walmart.driver.appiumdriver;
 
+import io.appium.java_client.MobileElement;
+
 import java.awt.Dimension;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,7 +24,6 @@ import com.walmart.driver.annotation.IOSFindBy;
 import com.walmart.utils.ScreenshotUtils;
 import com.walmart.utils.wait.AppiumWait;
 import com.walmart.utils.wait.Function;
-
 
 public class AppiumDriver extends io.appium.java_client.AppiumDriver {
 
@@ -303,5 +304,29 @@ public class AppiumDriver extends io.appium.java_client.AppiumDriver {
 		tapObject.put("touchCount", touchCount);
 		tapObject.put("duration", duration);
 		executeJs("mobile: tap", tapObject);
+	}
+
+	public void customSwipe() {
+		HashMap<String, Double> scrollObject = new HashMap<String, Double>();
+		scrollObject.put("touchCount", (double) 1);
+		scrollObject.put("startX", (double) 401);
+		scrollObject.put("startY", (double) 786);
+		scrollObject.put("endX", (double) 383);
+		scrollObject.put("endY", (double) 434);
+		scrollObject.put("duration", 0.6904297);
+		executeJs("mobile: swipe", scrollObject);
+		LOGGER.info("Swipe down complete");
+	}
+
+	@Override
+	public MobileElement scrollTo(String paramString) {
+		// TODO Auto-generated method stub
+		throw new RuntimeException("Method not supported");
+	}
+
+	@Override
+	public MobileElement scrollToExact(String paramString) {
+		// TODO Auto-generated method stub
+		throw new RuntimeException("Method not supported");
 	}
 }

@@ -1,9 +1,13 @@
 package com.walmart.ui.page;
 
-import io.appium.java_client.AndroidKeyCode;
+import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidKeyCode;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.browserlaunchers.Sleeper;
+import org.openqa.selenium.interactions.touch.ScrollAction;
 
 import com.walmart.driver.annotation.AndroidFindBy;
 import com.walmart.driver.appiumdriver.AppiumDriver;
@@ -31,9 +35,6 @@ public class HomePage extends BasePage {
 	@AndroidFindBy(id = "com.walmart.android:id/view_pager")
 	private AppiumElement ad;
 
-	@AndroidFindBy(id = "com.walmart.android:id/barcode_icon")
-	private AppiumElement barCodeIcon;
-
 	@AndroidFindBy(name = "Cancel")
 	private AppiumElement cancelButton;
 
@@ -45,8 +46,11 @@ public class HomePage extends BasePage {
 
 	@AndroidFindBy(id = "com.walmart.android:id/find_store")
 	private AppiumElement findAStoreCell;
-	
-	@AndroidFindBy(name="Get Google Play services")
+
+	@AndroidFindBy(id = "com.walmart.android:id/pharmacy")
+	private AppiumElement pharmacyCell;
+
+	@AndroidFindBy(name = "Get Google Play services")
 	private AppiumElement getGooglePlayServices;
 
 	public MainMenu mainMenu;
@@ -59,10 +63,6 @@ public class HomePage extends BasePage {
 		checkPage();
 	}
 
-	public boolean isBarCodeIconVisible() {
-		return barCodeIcon.isExists();
-	}
-
 	public boolean isShopPageOpen() {
 		return menuBar.getText().equals("Shop");
 	}
@@ -70,6 +70,7 @@ public class HomePage extends BasePage {
 	public SearchResulstPage clickAdvertisment() {
 		ad.click();
 		if (cancelButton.isExists()) {
+			cancelButton.click();
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
 			Sleeper.sleepTight(5);
@@ -86,7 +87,9 @@ public class HomePage extends BasePage {
 	public SearchResulstPage openSearchItem(String text) {
 		searchField.type(text);
 		Point point = ad.getLocation();
-		driver.touchByCoordinates(point.getX() / 2, point.getY() / 2, text);
+		Dimension dim = ad.getSize();
+		driver.touchByCoordinates(point.getX() + dim.getWidth() / 2,
+				point.getY() + dim.getHeight() / 2, text);
 		return new SearchResulstPage(driver);
 	}
 
@@ -95,14 +98,25 @@ public class HomePage extends BasePage {
 		return new CartPage(driver);
 	}
 
-	public HomePage clickShopByDepartmentCell() {
+	public ShopPage clickShopByDepartmentCell() {
 		shopByDepartmentCell.click();
-		return new HomePage(driver);
+		return new ShopPage(driver);
 	}
-	
-	public HomePage clickFindAStoreCell() {
+
+	public StoresPage clickFindAStoreCell() {
+		driver.customSwipe();
 		findAStoreCell.click();
-		return new HomePage(driver);
+		if (cancelButton.isExists()) {
+			cancelButton.click();
+			driver.sendKeyEvent(AndroidKeyCode.BACK);
+		}
+		return new StoresPage(driver);
+	}
+
+	public PharmacyPage clickPharmacyCell() {
+		driver.customSwipe();
+		pharmacyCell.click();
+		return new PharmacyPage(driver);
 	}
 
 	public ShopPage clickRollbackCell() {
@@ -117,7 +131,7 @@ public class HomePage extends BasePage {
 
 	@Override
 	public void checkPage() {
-		onlinebag.waitForElement(WAIT_FOR_ELEMENT_TIMEOUT);
+		weeklyAdCell.waitForElement(WAIT_FOR_ELEMENT_TIMEOUT);
 	}
 
 	@Override

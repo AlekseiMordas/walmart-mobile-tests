@@ -28,7 +28,7 @@ public class MainMenu extends BasePage {
 		super(driver);
 	}
 
-	public MainMenu openLeftMenu() {
+	public MainMenu open() {
 		if(!isPageOpens()) {
 			menuBar.click();
 		}

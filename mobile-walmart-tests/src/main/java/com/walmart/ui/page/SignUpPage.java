@@ -33,9 +33,13 @@ public class SignUpPage extends BasePage {
 	}
 
 	public void fillRegistrationData(final User user) {
+		fisrtNameField.click();
 		fisrtNameField.type(user.getFirstName());
+		lastNameField.click();
 		lastNameField.type(user.getLastName());
+		emailAddressField.click();
 		emailAddressField.type(user.getEmailAddress());
+		passwordField.click();
 		passwordField.type(user.getPassword());
 	}
 
