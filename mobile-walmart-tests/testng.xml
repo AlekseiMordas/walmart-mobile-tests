@@ -6,11 +6,11 @@
 			<class name="com.walmart.tests.AuthorizationTest" />
 		</classes>
 	</test>
-	<!--  <test verbose="1" name="AcceptanceTest_test" annotations="JDK"
+	 <test verbose="1" name="AcceptanceTest_test" annotations="JDK"
 		preserve-order="true">
 		<classes>
 			<class name="com.walmart.tests.AcceptanceTest" />
 		</classes>
-	</test> -->
+	</test>
 	
 </suite>
