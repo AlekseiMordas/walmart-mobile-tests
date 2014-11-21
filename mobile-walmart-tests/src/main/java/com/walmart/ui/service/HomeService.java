@@ -1,7 +1,6 @@
 package com.walmart.ui.service;
 
 import com.walmart.driver.appiumdriver.AppiumDriver;
-
 import com.walmart.ui.page.HomePage;
 
 public class HomeService {
@@ -20,7 +19,7 @@ public class HomeService {
 	}
 
 	public boolean isCartIconTakeToCartPage() {
-		return  homePage.topMenu.clickCartIcon().isPageOpens();
+		return homePage.topMenu.clickCartIcon().isPageOpens();
 	}
 
 	public boolean isAbleToSearch() {

@@ -1,13 +1,10 @@
 package com.walmart.ui.page;
 
-import io.appium.java_client.SwipeElementDirection;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidKeyCode;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.browserlaunchers.Sleeper;
-import org.openqa.selenium.interactions.touch.ScrollAction;
 
 import com.walmart.driver.annotation.AndroidFindBy;
 import com.walmart.driver.appiumdriver.AppiumDriver;
@@ -16,6 +13,8 @@ import com.walmart.ui.page.module.MainMenu;
 import com.walmart.ui.page.module.TopMenu;
 
 public class HomePage extends BasePage {
+
+	private static final String SHOP = "Shop";
 
 	@AndroidFindBy(id = "com.walmart.android:id/online_cart_icon")
 	private AppiumElement onlinebag;
@@ -64,19 +63,24 @@ public class HomePage extends BasePage {
 	}
 
 	public boolean isShopPageOpen() {
-		return menuBar.getText().equals("Shop");
+		return menuBar.getText().equals(SHOP);
 	}
 
-	public SearchResulstPage clickAdvertisment() {
+	@SuppressWarnings("unchecked")
+	public <T extends BasePage> T clickAdvertisment() {
 		ad.click();
 		if (cancelButton.isExists()) {
 			cancelButton.click();
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
+			Sleeper.sleepTight(1);
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
 			Sleeper.sleepTight(5);
 			ad.click();
 		}
-		return new SearchResulstPage(driver);
+		if (menuBar.getText().equals(SHOP)) {
+			return (T) new ShopPage(driver);
+		} else
+			return (T) new SearchResulstPage(driver);
 	}
 
 	public HomePage clickSearchIcon() {
@@ -110,6 +114,9 @@ public class HomePage extends BasePage {
 			cancelButton.click();
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
 		}
+		if (getGooglePlayServices.isExists()) {
+			driver.sendKeyEvent(AndroidKeyCode.BACK);
+		}
 		return new StoresPage(driver);
 	}
 
@@ -124,9 +131,13 @@ public class HomePage extends BasePage {
 		return new ShopPage(driver);
 	}
 
-	public ShopPage clickWeelkyAdCell() {
+	public StoresPage clickWeelkyAdCell() {
 		weeklyAdCell.click();
-		return new ShopPage(driver);
+		if (cancelButton.isExists()) {
+			cancelButton.click();
+			driver.sendKeyEvent(AndroidKeyCode.BACK);
+		}
+		return new StoresPage(driver);
 	}
 
 	@Override
