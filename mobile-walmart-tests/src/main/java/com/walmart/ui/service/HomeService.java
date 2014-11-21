@@ -20,7 +20,7 @@ public class HomeService {
 	}
 
 	public boolean isCartIconTakeToCartPage() {
-		return new HomePage(driver).topMenu.clickCartIcon().isPageOpens();
+		return  homePage.topMenu.clickCartIcon().isPageOpens();
 	}
 
 	public boolean isAbleToSearch() {
