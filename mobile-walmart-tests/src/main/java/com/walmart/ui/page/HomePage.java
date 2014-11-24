@@ -16,6 +16,11 @@ public class HomePage extends BasePage {
 
 	private static final String SHOP = "Shop";
 
+	private static final String STORES = "Stores";
+
+	@AndroidFindBy(xpath = "//android.view.View[1]/android.widget.LinearLayout[1]")
+	private AppiumElement homeTitle;
+
 	@AndroidFindBy(id = "com.walmart.android:id/online_cart_icon")
 	private AppiumElement onlinebag;
 
@@ -74,13 +79,20 @@ public class HomePage extends BasePage {
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
 			Sleeper.sleepTight(1);
 			driver.sendKeyEvent(AndroidKeyCode.BACK);
-			Sleeper.sleepTight(5);
+			Sleeper.sleepTight(2);
+			if (!ad.isExists()) {
+				driver.sendKeyEvent(AndroidKeyCode.BACK);
+			}
 			ad.click();
 		}
 		if (menuBar.getText().equals(SHOP)) {
 			return (T) new ShopPage(driver);
-		} else
+		}
+		if (menuBar.getText().equals(STORES)) {
+			return (T) new StoresPage(driver);
+		} else {
 			return (T) new SearchResulstPage(driver);
+		}
 	}
 
 	public HomePage clickSearchIcon() {
@@ -142,7 +154,7 @@ public class HomePage extends BasePage {
 
 	@Override
 	public void checkPage() {
-		weeklyAdCell.waitForElement(WAIT_FOR_ELEMENT_TIMEOUT);
+		homeTitle.waitForElement(WAIT_FOR_ELEMENT_TIMEOUT);
 	}
 
 	@Override

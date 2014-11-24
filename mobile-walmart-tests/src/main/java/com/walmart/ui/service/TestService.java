@@ -2,11 +2,9 @@ package com.walmart.ui.service;
 
 import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.ui.bo.User;
+import com.walmart.ui.page.HomePage;
 import com.walmart.ui.page.LoginPage;
 import com.walmart.ui.page.SignUpPage;
-
-import com.walmart.ui.page.HomePage;
-
 
 public class TestService {
 	private final AppiumDriver driver;
@@ -14,7 +12,6 @@ public class TestService {
 	private HomePage homePage;
 	private LoginPage loginPage;
 	private SignUpPage signUp;
-
 
 	public TestService(final AppiumDriver driver) {
 		this.driver = driver;
@@ -24,6 +21,11 @@ public class TestService {
 	public void doLogin(final User user) {
 		openLoginPage();
 		loginPage.login(user).checkPage();
+	}
+
+	public boolean isLoggedIn() {
+		homePage = new HomePage(driver);
+		return homePage.mainMenu.open().isLogOutButtonVisible();
 	}
 
 	public void loginIfNeeded(final User user) {
@@ -51,6 +53,5 @@ public class TestService {
 		homePage = signUp.clickContinue();
 		return homePage.mainMenu.open().isLogOutButtonVisible();
 	}
-	
 
 }

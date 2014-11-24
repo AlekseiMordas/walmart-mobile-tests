@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Walmart_Mobile_test_suite">
+	<test verbose="1" name="Authorization_tests" annotations="JDK"
+		preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.AuthorizationTest">
+				<methods>
+					<include name="loginWithRegisteredUser" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite>

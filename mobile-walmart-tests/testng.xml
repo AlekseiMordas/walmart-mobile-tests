@@ -1,5 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Walmart_Mobile_test_suite">
+
 	<test verbose="1" name="Authorization_tests" annotations="JDK"
 		preserve-order="true">
 		<classes>

@@ -22,10 +22,23 @@
 			<destName>testng.xml</destName>
 		</file>
 		<file>
+			<source>signin.xml</source>
+			<destName>signin.xml</destName>
+		</file>
+		<file>
+			<source>signup.xml</source>
+			<destName>signup.xml</destName>
+		</file>
+		<file>
+			<source>acceptance.xml</source>
+			<destName>acceptance.xml</destName>
+		</file>
+
+		<file>
 			<source>local.properties</source>
 			<destName>local.properties</destName>
 		</file>
-		
+
 	</files>
 	<fileSets>
 		<fileSet>

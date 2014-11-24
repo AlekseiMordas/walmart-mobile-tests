@@ -15,9 +15,10 @@ public class AuthorizationTest extends BaseTest {
 				"Can't create new User with email");
 	}
 
-	@Test(description = "Login with registered user", priority = 1, enabled = false)
+	@Test(description = "Login with registered user", priority = 1, enabled = true)
 	private void loginWithRegisteredUser() throws Exception {
 		service.doLogin(UserFactory.getRegistereUser());
+		Assert.assertTrue(service.isLoggedIn(), "Log out button not visible");
 	}
 
 	@Test(description = "Login with incorrect credentials", priority = 2, enabled = false)

@@ -21,6 +21,7 @@ public class SearchResulstPage extends BasePage {
 
 	@Override
 	public boolean isPageOpens() {
+		System.out.println(menuBar.getText());
 		return menuBar.getText().equals("Search Results");
 	}
 

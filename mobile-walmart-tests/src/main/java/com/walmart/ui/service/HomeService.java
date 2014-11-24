@@ -2,6 +2,7 @@ package com.walmart.ui.service;
 
 import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.ui.page.HomePage;
+import com.walmart.ui.page.SearchResulstPage;
 
 public class HomeService {
 	private final AppiumDriver driver;
@@ -23,8 +24,10 @@ public class HomeService {
 	}
 
 	public boolean isAbleToSearch() {
-		return new HomePage(driver).clickSearchIcon().openSearchItem("Barcode")
-				.isPageOpens();
+		SearchResulstPage searchResult = new HomePage(driver).clickSearchIcon()
+				.openSearchItem("Barcode");
+		searchResult.checkPage();
+		return searchResult.isPageOpens();
 	}
 
 	public boolean isBarcodeScannerExist() {

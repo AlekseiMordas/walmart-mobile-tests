@@ -1,8 +1,5 @@
 package com.walmart.driver.element;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
-
 import java.awt.Rectangle;
 
 import org.apache.log4j.Logger;
@@ -52,6 +49,28 @@ public class AppiumElement implements Element {
 		} catch (final NoSuchElementException e) {
 			driver.quit();
 			throw new RuntimeException("Failed to wait element "
+					+ e.getMessage());
+		}
+	}
+
+	public void waitForElementWithText(final String text) {
+		LOGGER.info("Waiting element '" + by.toString()
+				+ "'. Timeout in seconds: " + 10);
+		try {
+			new AppiumWait(driver, 10)
+					.until(new Function<AppiumDriver, Boolean>() {
+						@Override
+						public Boolean apply(final AppiumDriver d) {
+							try {
+								return d.findElement(by).getText().equals(text);
+							} catch (final Exception e) {
+								return false;
+							}
+						}
+					});
+		} catch (final NoSuchElementException e) {
+			driver.quit();
+			throw new RuntimeException("Failed to wait element"
 					+ e.getMessage());
 		}
 
@@ -122,21 +141,22 @@ public class AppiumElement implements Element {
 				upperLeft.getY() + dimensions.getHeight() / 2);
 	}
 
-//	public void pinch() {
-//		driver.pinch(driver.findElement(by));
-//	}
-//
-//	public void tap(int fingers, int duration) {
-//		driver.tap(fingers, driver.findElement(by), duration);
-//	}
-//
-//	public void zoom() {
-//		driver.zoom(driver.findElement(by));
-//	}
-//
-//	public void swipe(SwipeElementDirection direction, int duration) {
-//		direction.swipe(driver, (MobileElement) driver.findElement(by), duration);
-//	}
+	// public void pinch() {
+	// driver.pinch(driver.findElement(by));
+	// }
+	//
+	// public void tap(int fingers, int duration) {
+	// driver.tap(fingers, driver.findElement(by), duration);
+	// }
+	//
+	// public void zoom() {
+	// driver.zoom(driver.findElement(by));
+	// }
+	//
+	// public void swipe(SwipeElementDirection direction, int duration) {
+	// direction.swipe(driver, (MobileElement) driver.findElement(by),
+	// duration);
+	// }
 
 	@Override
 	public boolean isVisible() {
