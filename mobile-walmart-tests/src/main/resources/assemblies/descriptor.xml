@@ -30,8 +30,8 @@
 			<destName>signup.xml</destName>
 		</file>
 		<file>
-			<source>acceptance.xml</source>
-			<destName>acceptance.xml</destName>
+			<source>home_links.xml</source>
+			<destName>home_links.xml</destName>
 		</file>
 
 		<file>
