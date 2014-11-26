@@ -32,7 +32,7 @@ Mac OS
 	-all.xml (All tests in suite)
 	-home_links.xml (Test verify home links)
 	-signin.xml (Test Sign In)
-	-signup.xml (Test Sign In)
+	-signup.xml (Test Sign Up)
 
 3) View test results in browser: target/walmart-mobile-tests-1.0.0/test-output/html/index.html    
 
