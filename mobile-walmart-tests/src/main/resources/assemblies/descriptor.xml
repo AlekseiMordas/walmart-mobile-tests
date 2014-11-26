@@ -18,8 +18,8 @@
 			<destName>${artifactId}.${project.packaging}</destName>
 		</file>
 		<file>
-			<source>testng.xml</source>
-			<destName>testng.xml</destName>
+			<source>all.xml</source>
+			<destName>all.xml</destName>
 		</file>
 		<file>
 			<source>signin.xml</source>
