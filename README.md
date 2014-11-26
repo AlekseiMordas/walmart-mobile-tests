@@ -14,11 +14,12 @@ Mac OS
 
 2.1) go to project directory;
 	
-	
-2.2) execute "mvn clean generate-resources package";
+2.3) cd mobile-walmart-tests
+
+2.4) execute "mvn clean generate-resources package";
 	
 
-2.3) go to "target/walmart-mobile-tests-1.0.0" like: 
+2.5) go to "target/walmart-mobile-tests-1.0.0" like: 
 "target/walmart-mobile-tests-1.0.0" and run your tests with command:
 	
 	
