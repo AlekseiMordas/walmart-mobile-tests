@@ -13,5 +13,11 @@
 			<class name="com.walmart.tests.AcceptanceTest" />
 		</classes>
 	</test>
+	<test verbose="1" name="C159461 - Verify Search bar accessibility" annotations="JDK"
+		preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest" />
+		</classes>
+	</test>
 	
 </suite>

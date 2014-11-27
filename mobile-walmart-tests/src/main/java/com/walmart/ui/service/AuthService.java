@@ -6,14 +6,14 @@ import com.walmart.ui.page.HomePage;
 import com.walmart.ui.page.LoginPage;
 import com.walmart.ui.page.SignUpPage;
 
-public class TestService {
+public class AuthService {
 	private final AppiumDriver driver;
 
 	private HomePage homePage;
 	private LoginPage loginPage;
 	private SignUpPage signUp;
 
-	public TestService(final AppiumDriver driver) {
+	public AuthService(final AppiumDriver driver) {
 		this.driver = driver;
 
 	}

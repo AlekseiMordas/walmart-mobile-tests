@@ -33,6 +33,10 @@
 			<source>home_links.xml</source>
 			<destName>home_links.xml</destName>
 		</file>
+		<file>
+			<source>search.xml</source>
+			<destName>search.xml</destName>
+		</file>
 
 		<file>
 			<source>local.properties</source>

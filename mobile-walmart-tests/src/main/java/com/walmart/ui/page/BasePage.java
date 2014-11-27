@@ -7,6 +7,8 @@ import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.driver.page.Page;
 import com.walmart.driver.page.PageFactory;
 import com.walmart.runner.DeviceConfig;
+import com.walmart.ui.page.module.MainMenu;
+import com.walmart.ui.page.module.TopMenu;
 import com.walmart.utils.wait.Sleeper;
 
 
@@ -27,6 +29,9 @@ public abstract class BasePage extends Page {
 
 	protected static final long WAIT_SLEPPER_TIMEOUT = 5000;
 
+	public MainMenu mainMenu;
+	public TopMenu topMenu;
+	
 	public BasePage(final AppiumDriver driver) {
 		PageFactory.initElements(driver, this, OSType.valueOf(DeviceConfig.getOs()));
 		this.driver = driver;

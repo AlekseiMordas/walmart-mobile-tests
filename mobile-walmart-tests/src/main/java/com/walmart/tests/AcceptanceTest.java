@@ -1,6 +1,7 @@
 package com.walmart.tests;
 
 import io.appium.java_client.android.AndroidKeyCode;
+
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -14,7 +15,7 @@ public class AcceptanceTest extends BaseTest {
 		softAssert.assertTrue(homeService.isCartIconTakeToCartPage(),
 				"Cart icon didn't take to cart page");
 		driver.sendKeyEvent(AndroidKeyCode.BACK);
-		softAssert.assertTrue(homeService.isAbleToSearch(),
+		softAssert.assertTrue(homeService.isAbleToSearch("iphone 6"),
 				"Not able to search");
 		driver.sendKeyEvent(AndroidKeyCode.BACK);
 		softAssert.assertTrue(homeService.isBarcodeScannerExist(),

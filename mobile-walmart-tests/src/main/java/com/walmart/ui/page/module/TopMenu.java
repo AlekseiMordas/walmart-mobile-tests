@@ -17,6 +17,10 @@ public class TopMenu extends BasePage {
 
 	@AndroidFindBy(id = "com.walmart.android:id/barcode_icon")
 	private AppiumElement barCodeIcon;
+	
+
+	@AndroidFindBy(id = "com.walmart.android:id/menu_item_search")
+	private AppiumElement searchButton;
 
 
 	public TopMenu(final AppiumDriver driver) {
@@ -36,6 +40,10 @@ public class TopMenu extends BasePage {
 		return barCodeIcon.isExists();
 	}
 
+	public boolean isSearchItemExist() {
+		return searchButton.isExists();
+	}
+	
 	@Override
 	public void checkPage() {
 		titlePage.waitForElement(WAIT_FOR_ELEMENT_TIMEOUT);

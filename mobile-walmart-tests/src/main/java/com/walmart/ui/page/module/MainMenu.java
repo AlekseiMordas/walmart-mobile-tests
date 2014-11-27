@@ -1,14 +1,11 @@
 package com.walmart.ui.page.module;
 
 import com.walmart.driver.annotation.AndroidFindBy;
-import com.walmart.driver.annotation.IOSFindBy;
 import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.driver.element.AppiumElement;
 import com.walmart.ui.page.BasePage;
-import com.walmart.ui.page.LoginPage;
 import com.walmart.ui.page.HomePage;
-import com.walmart.utils.wait.Sleeper;
-
+import com.walmart.ui.page.LoginPage;
 
 public class MainMenu extends BasePage {
 
@@ -17,10 +14,13 @@ public class MainMenu extends BasePage {
 
 	@AndroidFindBy(name = "Sign In")
 	private AppiumElement loginButton;
-	
+
 	@AndroidFindBy(name = "Sign Out")
 	private AppiumElement logOutButton;
-	
+
+	@AndroidFindBy(xpath = "//android.widget.ListView[1]//android.widget.TextView[@text='Home']")
+	private AppiumElement homeButton;
+
 	@AndroidFindBy(name = "Shop")
 	private AppiumElement shopTextView;
 
@@ -29,10 +29,15 @@ public class MainMenu extends BasePage {
 	}
 
 	public MainMenu open() {
-		if(!isPageOpens()) {
+		if (!isPageOpens()) {
 			menuBar.click();
 		}
 		return new MainMenu(driver);
+	}
+
+	public HomePage clickHome() {
+		homeButton.click();
+		return new HomePage(driver);
 	}
 
 	public LoginPage clickLogIn() {
@@ -48,7 +53,7 @@ public class MainMenu extends BasePage {
 	public boolean isLogOutButtonVisible() {
 		return logOutButton.isExists();
 	}
-	
+
 	public boolean isLogInButtonVisible() {
 		return loginButton.isExists();
 	}

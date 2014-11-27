@@ -8,9 +8,9 @@ import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.exceptions.XmlParametersException;
 import com.walmart.runner.DeviceConfig;
 import com.walmart.runner.Devices;
+import com.walmart.ui.service.AuthService;
 import com.walmart.ui.service.HomeService;
-import com.walmart.ui.service.TestService;
-
+import com.walmart.ui.service.ShopService;
 
 /**
  * @author aleksei_mordas
@@ -26,8 +26,9 @@ public class BaseTest {
 
 	protected AppiumDriver driver;
 
-	protected TestService service;
+	protected AuthService service;
 	protected HomeService homeService;
+	protected ShopService shopService;
 
 	@BeforeClass(description = "Init and check page")
 	public void initPages() throws Exception {
@@ -35,8 +36,9 @@ public class BaseTest {
 		switch (Devices.valueOf(DEVICE)) {
 		case ANDROID:
 			driver = IosDriverWrapper.getAndroid(HOST, PORT);
-			service = new TestService(driver);
+			service = new AuthService(driver);
 			homeService = new HomeService(driver);
+			shopService = new ShopService(driver);
 			break;
 		default:
 			throw new XmlParametersException("Invalid device");
