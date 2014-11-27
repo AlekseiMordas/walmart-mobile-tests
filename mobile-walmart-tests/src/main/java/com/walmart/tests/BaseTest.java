@@ -10,6 +10,7 @@ import com.walmart.runner.DeviceConfig;
 import com.walmart.runner.Devices;
 import com.walmart.ui.service.AuthService;
 import com.walmart.ui.service.HomeService;
+import com.walmart.ui.service.SearchService;
 import com.walmart.ui.service.ShopService;
 
 /**
@@ -29,6 +30,7 @@ public class BaseTest {
 	protected AuthService service;
 	protected HomeService homeService;
 	protected ShopService shopService;
+	protected SearchService searchService;
 
 	@BeforeClass(description = "Init and check page")
 	public void initPages() throws Exception {
@@ -39,6 +41,7 @@ public class BaseTest {
 			service = new AuthService(driver);
 			homeService = new HomeService(driver);
 			shopService = new ShopService(driver);
+			searchService = new SearchService(driver);
 			break;
 		default:
 			throw new XmlParametersException("Invalid device");

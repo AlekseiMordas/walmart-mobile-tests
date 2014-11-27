@@ -104,6 +104,17 @@
 			<version>6.8.5</version>
 		</dependency>
 
+<dependency>
+    <groupId>io.selendroid</groupId>
+    <version>0.12.0</version>
+    <artifactId>selendroid-standalone</artifactId>
+</dependency>
+<dependency>
+    <groupId>io.selendroid</groupId>
+    <version>0.12.0</version>
+    <artifactId>selendroid-client</artifactId>
+</dependency>
+
 		<dependency>
 			<groupId>commons-validator</groupId>
 			<artifactId>commons-validator</artifactId>

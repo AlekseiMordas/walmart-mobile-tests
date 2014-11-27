@@ -13,13 +13,14 @@ public class UserFactory {
 				.randomAlphabetic(3)).toLowerCase());
 		user.setFirstName("Alex");
 		user.setLastName("WalmartTest");
-		user.setPassword("WalMob2010");
+		user.setPassword("123456");
 		return user;
 	}
 
 	public static User getRegistereUser() {
 		final User user = getNewUser();
 		user.setEmailAddress("dnataraj@walmart.com");
+		user.setPassword("WalMob2010");
 		return user;
 	}
 

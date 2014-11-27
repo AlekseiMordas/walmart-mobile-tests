@@ -9,7 +9,7 @@ public class SearchTest extends BaseTest {
 
 	@Test(priority = 0, groups = "search")
 	public void verifySearchBarAccessibility() {
-		Assert.assertTrue(homeService.isSearchAccesibleOnHomePage(),
+		Assert.assertTrue(searchService.isSearchAccesibleOnHomePage(),
 				"Search not accesible from Home page");
 		ShopPage shopPage = homeService.openRollbackFromHome();
 		Assert.assertTrue(shopPage.topMenu.isSearchItemExist(),
@@ -22,14 +22,12 @@ public class SearchTest extends BaseTest {
 		Assert.assertTrue(
 				shopService.openCategory("Tires").topMenu.isSearchItemExist(),
 				"Search not accesible from SubCategory page");
-
-		Assert.assertTrue(homeService.isSearchAccesibleOnHomePage(),
-				"Search not accesible from Home page");
 	}
 
 	@Test(groups = "search")
 	public void checkMultiWordTerm() {
-		Assert.assertTrue(homeService.doSearch("iphone 6 grey").isSortAndFilterButtonsExist());
+		Assert.assertTrue(searchService.doSearch("iphone 6 grey")
+				.isSortAndFilterButtonsExist());
 
 	}
 

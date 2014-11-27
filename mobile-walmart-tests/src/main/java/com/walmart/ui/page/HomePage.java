@@ -2,8 +2,6 @@ package com.walmart.ui.page;
 
 import io.appium.java_client.android.AndroidKeyCode;
 
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.browserlaunchers.Sleeper;
 
 import com.walmart.driver.annotation.AndroidFindBy;
@@ -33,8 +31,6 @@ public class HomePage extends BasePage {
 	@AndroidFindBy(id = "com.walmart.android:id/shop")
 	private AppiumElement shopByDepartmentCell;
 
-	@AndroidFindBy(id = "com.walmart.android:id/search_src_text")
-	private AppiumElement searchField;
 
 	@AndroidFindBy(id = "com.walmart.android:id/view_pager")
 	private AppiumElement ad;
@@ -95,19 +91,7 @@ public class HomePage extends BasePage {
 		}
 	}
 
-	public HomePage clickSearchIcon() {
-		searchButton.click();
-		return new HomePage(driver);
-	}
 
-	public SearchResulstPage openSearchItem(String text) {
-		searchField.type(text);
-		Point point = ad.getLocation();
-		Dimension dim = ad.getSize();
-		driver.touchByCoordinates(point.getX() + dim.getWidth() / 2,
-				point.getY() + dim.getHeight() / 2, text);
-		return new SearchResulstPage(driver);
-	}
 
 	public CartPage clickCartIcon() {
 		onlinebag.click();

@@ -15,7 +15,7 @@ public class AcceptanceTest extends BaseTest {
 		softAssert.assertTrue(homeService.isCartIconTakeToCartPage(),
 				"Cart icon didn't take to cart page");
 		driver.sendKeyEvent(AndroidKeyCode.BACK);
-		softAssert.assertTrue(homeService.isAbleToSearch("iphone 6"),
+		softAssert.assertTrue(searchService.isAbleToSearch("iphone 6"),
 				"Not able to search");
 		driver.sendKeyEvent(AndroidKeyCode.BACK);
 		softAssert.assertTrue(homeService.isBarcodeScannerExist(),

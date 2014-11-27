@@ -1,6 +1,7 @@
 package com.walmart.ui.service;
 
 import com.walmart.driver.appiumdriver.AppiumDriver;
+import com.walmart.ui.page.HomePage;
 import com.walmart.ui.page.SearchResulstPage;
 import com.walmart.ui.page.ShopPage;
 
@@ -15,14 +16,22 @@ public class SearchService {
 
 	}
 
-	public boolean isSortAndFilterButtonsExist() {
-		searchResult = new SearchResulstPage(driver);
-		return searchResult.isSortAndFilterButtonsExist();
+	public boolean isAbleToSearch(String name) {
+		return new HomePage(driver).topMenu.doSearch(name).isPageOpens();
 	}
 
-	public ShopPage openCategory(String name) {
-		shopPage = new ShopPage(driver);
-		return shopPage.openCategory(name);
+	public SearchResulstPage doSearch(String name) {
+		return new HomePage(driver).topMenu.doSearch(name);
 	}
+
+	public boolean isSearchAccesibleOnHomePage() {
+		return new HomePage(driver).topMenu.isSearchItemExist();
+	}
+
+
+	// public ShopPage openCategory(String name) {
+	// shopPage = new ShopPage(driver);
+	// return shopPage.openCategory(name);
+	// }
 
 }

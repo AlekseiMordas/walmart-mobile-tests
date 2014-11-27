@@ -2,7 +2,6 @@ package com.walmart.ui.service;
 
 import com.walmart.driver.appiumdriver.AppiumDriver;
 import com.walmart.ui.page.HomePage;
-import com.walmart.ui.page.SearchResulstPage;
 import com.walmart.ui.page.ShopPage;
 import com.walmart.ui.page.module.MainMenu;
 
@@ -32,19 +31,6 @@ public class HomeService {
 
 	public boolean isCartIconTakeToCartPage() {
 		return homePage.topMenu.clickCartIcon().isPageOpens();
-	}
-
-	public boolean isAbleToSearch(String name) {
-		return new HomePage(driver).clickSearchIcon().openSearchItem(name)
-				.isPageOpens();
-	}
-
-	public SearchResulstPage doSearch(String name) {
-		return new HomePage(driver).clickSearchIcon().openSearchItem(name);
-	}
-
-	public boolean isSearchAccesibleOnHomePage() {
-		return new HomePage(driver).topMenu.isSearchItemExist();
 	}
 
 	public boolean isBarcodeScannerExist() {
