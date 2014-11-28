@@ -41,13 +41,10 @@ public class CapabilitiesFactory {
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "nexu4");
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,
-				"Selendroid");
+				"Appium");
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,
 				MobilePlatform.ANDROID);
-		capabilities.setCapability("app-package", "com.walmart.android");
-		capabilities.setCapability("app-activity",
-				"com.walmart.android.app.main.HomeActivity");
-		capabilities.setCapability("newCommandTimeout", 120);
+	//	capabilities.setCapability("newCommandTimeout", 120);
 		capabilities.setCapability(MobileCapabilityType.APP, new File(
 				ApplicationStorage.getDefaultPathToApp()).getAbsolutePath());
 		LOGGER.info("CAPABILITY PATH: "

@@ -13,11 +13,49 @@
 			<class name="com.walmart.tests.AcceptanceTest" />
 		</classes>
 	</test>
-	<test verbose="1" name="C159461 - Verify Search bar accessibility" annotations="JDK"
-		preserve-order="true">
+	<!-- SEARCH Feature -->
+	<test verbose="1" name="C159461 - Verify Search bar accessibility"
+		annotations="JDK" preserve-order="true">
 		<classes>
-			<class name="com.walmart.tests.SearchTest" />
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="verifySearchBarAccessibility" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test verbose="1" name="C159460 - Product search - Multi word item"
+		annotations="JDK" preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="checkMultiWordTerm" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test verbose="1" name="C159463,C159463 - Search with term which return 0"
+		annotations="JDK" preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="checkSearchReturnsZero" />
+				</methods>
+			</class>
 		</classes>
 	</test>
 	
+	<test verbose="1" name="C159455 - Sort search results by Best Sellers"
+		annotations="JDK" preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="checkSearchResultsSortByBestSellers" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<!-- END SEARCH Feature -->
 </suite>

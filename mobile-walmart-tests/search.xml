@@ -1,11 +1,50 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Walmart_Mobile_test_suite">
 
-	<test verbose="1" name="C159461 - Verify Search bar accessibility" annotations="JDK"
-		preserve-order="true">
+
+	<test verbose="1" name="C159461 - Verify Search bar accessibility"
+		annotations="JDK" preserve-order="true">
 		<classes>
-			<class name="com.walmart.tests.SearchTest" />
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="verifySearchBarAccessibility" />
+				</methods>
+			</class>
 		</classes>
 	</test>
+
+	<test verbose="1" name="C159460 - Product search - Multi word item"
+		annotations="JDK" preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="checkMultiWordTerm" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test verbose="1" name="C159463,C159463 - Search with term which return 0"
+		annotations="JDK" preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="checkSearchReturnsZero" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test verbose="1" name="C159455 - Sort search results by Best Sellers"
+		annotations="JDK" preserve-order="true">
+		<classes>
+			<class name="com.walmart.tests.SearchTest">
+				<methods>
+					<include name="checkSearchResultsSortByBestSellers" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
 
 </suite>

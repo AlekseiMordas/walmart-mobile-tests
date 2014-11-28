@@ -1,5 +1,7 @@
 package com.walmart.ui.page.module;
 
+import io.appium.java_client.android.AndroidKeyCode;
+
 import org.openqa.selenium.Point;
 
 import com.walmart.driver.annotation.AndroidFindBy;
@@ -34,12 +36,19 @@ public class TopMenu extends BasePage {
 		searchButton.click();
 	}
 
-	public SearchResulstPage doSearch(String text) {
+	public SearchResulstPage doSearchWithWildCard(String text) {
 		clickSearchIcon();
 		searchField.type(text);
 		Point point = searchField.getCenter();
 		driver.touchByCoordinates(point.getX(), point.getY() + 25,
 				"searchResult");
+		return new SearchResulstPage(driver);
+	}
+
+	public SearchResulstPage doSearch(String text) {
+		clickSearchIcon();
+		searchField.type(text);
+		driver.sendKeyEvent(AndroidKeyCode.ENTER);
 		return new SearchResulstPage(driver);
 	}
 
